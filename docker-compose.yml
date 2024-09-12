@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Make sure you have this Dockerfile in your project directory
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      GITHUB_CLIENT_ID: Ov23liBAF0k9ID7k9PTx
+      GITHUB_CLIENT_SECRET: cdd3e056c1f75ad1f58c7c8feaf46ed53893ef87
+      GITHUB_CALLBACK_URL: http://localhost:8000/auth/github/callback
+      KEYCLOAK_CLIENT_ID: localhost
+      KEYCLOAK_CLIENT_SECRET: localhost
+      KEYCLOAK_REDIRECT_URI: http://localhost:8000/login/keycloak/callback
+      KEYCLOAK_BASE_URL: https://unifi-passport.hopto.org
+      KEYCLOAK_REALM: unifipassport-staging
